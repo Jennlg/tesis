@@ -1,0 +1,605 @@
+\documentclass[12pt]{article}
+\usepackage{latexsym}
+\usepackage{amscd}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,amsmath,amsthm,amssymb}
+\usepackage{mathrsfs}
+\usepackage[spanish]{babel}
+\usepackage{multicol,enumerate,color}
+\usepackage[pdftex]{graphicx}
+\usepackage{ragged2e}
+\usepackage{dsfont}
+\usepackage{float}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage{multirow} % para las tablas
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\newenvironment{problema}[2][Problema]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage[spanish, activeacute]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage[usenames]{color}
+\usepackage{wrapfig}
+\usepackage{algorithm}
+\setlength\parindent{0 pt}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+\newtheorem*{remark}{Observación}
+\newtheorem*{example}{Ejemplo}
+\newtheorem{definition}{Definición}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\definecolor{tcp}{RGB}{128,37,92}
+\newcommand{\tcr}{\textcolor{red}}
+\newcommand{\tcb}{\textcolor{blue}}
+\newcommand{\tcm}{\textcolor{magenta}}
+\newcommand{\tcg}{\textcolor{green}}
+\def\endproof{\\ \mbox{}\hfill $\blacksquare$}
+
+\newenvironment{Problema}[2][Problema]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries#1}\hskip\labelsep{\bfseries#2.}]}{\end{trivlist}}
+
+\begin{document}
+\title{\Huge{\textbf{\textsc{\textcolor{tcp}{UNIVERSIDAD AUT\'ONOMA DE CHIAPAS.}}}}\\
+\huge{\textbf{\textsc{\textcolor{tcp}{Facultad de Ciencias en F\'isica y Matem\'aticas.}}}} \\ \vspace{1cm}{\Huge{\textbf{\textcolor{tcp}{Avances de tesis}}} }\\}
+\captionsetup[table]{labelformat=empty}
+\captionsetup[figure]{labelformat=empty}
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=.15]{FCFMLOGO.png}
+    \caption{}
+    \label{fig:my_label}
+\end{figure}
+\author{\Large{\textbf{\textcolor{tcp}{ }}}\\ \hspace{.2cm}      \vspace{.4cm}\\ \vspace{.3cm}\\\Large{\textbf{\textcolor{tcp}{Licenciatura en Matemáticas Aplicadas.}}}\vspace{.5cm}\\\\\Large{\textbf{\textcolor{tcp}{Alumna:}}}\hspace{0.5cm}\\Jennifer Sherlyn López García}
+\date{\vspace{4 cm} \textit{\today}}
+
+\newpage
+
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Preliminares}
+\subsection{Teoría de conjuntos}
+En esta sección, se abordan algunas de las ideas y conceptos elementales de la teoría de conjuntos que son necesarios para una introducción moderna a la teoría de la probabilidad.\\
+
+Considere una colección de objetos en la que cada objeto se denomina punto o elemento. Se asume que dicha colección de objetos es lo suficientemente amplia como para incluir todos los puntos considerados en una discusión específica. La totalidad de estos puntos se conoce como espacio, universo o conjunto universal.
+\begin{example}
+     $\Omega = \mathbb{R}^2$, donde $\mathbb{R}^2$ es la colección de puntos $\omega$ en el plano y $\omega=(x,y)$ es cualquier par de números reales $x$ e $y$.
+\end{example}
+Por lo general, se utilizarán letras latinas mayúsculas al comienzo del alfabeto, con o sin subíndices, para denotar conjuntos. Si $\omega$ es un punto o elemento que pertenece al conjunto $A$, se escribirá $\omega \in A$; si $\omega$ no es un elemento de $A$, se escribirá $\omega \notin A$.
+
+\begin{definition}[Subconjunto]
+    Si cada elemento de un conjunto $A$ también es un elemento de un conjunto $B$, entonces se define que $A$ es un subconjunto de $B$, y se escribirá $A\subset B$ o $B\supset A$; se lee como ``$A$ está contenido en $B$'' o ``$B$ contiene a $A$ ''.
+\end{definition}
+
+\begin{definition}[Conjuntos equivalentes]
+    Dos conjuntos $A$ y $B$ se definen como equivalentes, o iguales, si $A\subset B$ y $B\subset A$. Esto se indicará escribiendo $A=B$.
+\end{definition}
+
+\begin{definition}[Conjunto vacío]
+     Si un conjunto $A$ no contiene puntos, se le llamará conjunto nulo o conjunto vacío, y se denotará por $\emptyset$.
+\end{definition}
+
+\begin{definition}[Complemento]
+    El complemento de un conjunto $A$ con respecto al espacio $\Omega$, denotado por $\overline{A}$, $A^c$ o $\Omega-A$, es el conjunto de todos los puntos que están en $\Omega$ pero no en $A$.
+\end{definition}
+
+\begin{definition}[Unión]
+    Sea $A$ y $B$ dos subconjuntos cualesquiera de $\Omega$; entonces el conjunto que consiste en todos los puntos que están en $A$, en $B$ o en ambos se define como la unión de $A$ y $B$, y se escribe $A \cup B$.
+\end{definition}
+
+\begin{definition}[Intersección]
+    Sean $A$ y $B$ dos subconjuntos cualesquiera de $\Omega$; entonces el conjunto formado por todos los puntos que están tanto en $A$ como en $B$ se define como la intersección de $A$ y $B$, y se escribe $A \cap B$.
+\end{definition}
+
+\begin{definition}[Diferencia de conjuntos]
+    Sean $A$ y $B$ dos subconjuntos cualesquiera de $\Omega$. El conjunto de todos los puntos en $A$ que no están en $B$ se denotará por $A-B$ y se define como la diferencia de conjuntos.
+\end{definition}
+
+Las operaciones de complemento, unión e intersección de conjuntos se han definido en las Definiciones 4 a 6, respectivamente. Estas operaciones de conjuntos satisfacen varias leyes, \cite{ash2000probability} proporciona las siguientes
+
+\begin{theorem}[Leyes del álgebra de conjuntos]~\\
+    \begin{itemize}
+        \item[1.] \textbf{Leyes de idempotencia:} 
+        \begin{align*}
+            A\cup A &= A \\
+            A\cap A &=A
+        \end{align*}
+        \item[2.] \textbf{Leyes asociativas:} 
+        \begin{align*}
+            (A\cup B)\cup C &= A \cup (B\cup C)\\
+            (A\cap B)\cap C &= A\cap (B \cap C)
+        \end{align*} 
+        \item[3.] \textbf{Leyes conmutativas:} 
+        \begin{align*}
+            A\cup B &= B\cup A\\
+            A\cap B &= B \cap A
+        \end{align*}
+        \item[4.] \textbf{Leyes distributivas:} 
+        \begin{align*}
+            A\cup (B\cap C) &= (A\cup B)\cap (A\cup C)\\
+            A\cap (B\cup C) &= (A\cap B)\cup (A\cap C)
+        \end{align*} 
+        \item[5.] \textbf{Leyes de identidad:} 
+        \begin{align*}
+            A\cup \emptyset &= A\\
+            A\cap \Omega &= A\\
+            A\cup \Omega &= \Omega\\
+            A\cap \emptyset &= \emptyset
+        \end{align*} 
+        \item[6.] \textbf{Leyes de complemento:} 
+        \begin{align*}
+            A\cup A^c &= \Omega\\
+            A\cap A^c &= \emptyset\\
+            (A^c)^c &= A\\
+            \Omega^c&=\emptyset\\
+            \emptyset^c&= \Omega
+        \end{align*} 
+        \item[7.] \textbf{Leyes de De Morgan:} 
+        \begin{align*}
+            (A\cup B)^c &=A^c \cap B^c\\
+            (A\cap B)^c &=A^c \cup B^c
+        \end{align*} 
+    \end{itemize}
+\end{theorem}
+Varias de las leyes mencionadas anteriormente se ilustran en los diagramas de Venn en la Figura 1. Aunque se utilizará libremente cualquiera de las leyes mencionadas, podría resultar instructivo proporcionar una prueba de una de ellas para ilustrar la técnica. Se considera el siguiente ejemplo:
+\begin{example}
+Demostrar que $(A \cup B)^c = A^c \cap B^c$.
+\begin{proof}~\\
+    Según la definición, dos conjuntos son iguales si cada uno está contenido en el otro. Primero se demuestra que $(A\cup B)^c \subset A^c\cap B^c $ al probar que si $\omega \in (A\cup B)^c$, entonces $\omega \in A^c \cap B^c$. Ahora bien, $\omega \in (A\cup B)^c$ implica que $\omega \notin A \cup B$, lo cual implica que $\omega \notin A$ y $\omega \notin B$, lo que a su vez implica que $\omega \in A^c$ y $\omega \in B^c$; es decir, $\omega \in A^c\cap B^c$. A continuación se demuestra que $A^c \cap B^c \subset (A\cup B)^c$. Sea $\omega \in A^c \cap B^c$, lo que significa que $\omega$ pertenece tanto a $A^c$ como a $B^c$. Entonces, $\omega \notin A \cup B$, ya que de lo contrario $\omega$ debería pertenecer al menos a uno de los conjuntos $A$ o $B$, lo cual contradice que $\omega$ pertenezca tanto a $A^c$ como a $B^c$; sin embargo, $\omega \notin A \cup B$ implica que $\omega \in (A\cup B)^c$, lo que completa la prueba.
+\end{proof}
+\end{example}
+
+Se han definido la unión y la intersección de dos conjuntos; estas definiciones se extienden inmediatamente a más de dos conjuntos, de hecho, a un número arbitrario de conjuntos. Es costumbre distinguir entre los conjuntos en una colección de subconjuntos de $\Omega$ asignándoles nombres en forma de subíndices. Se considera el conjunto de índices $\Lambda$ como el catálogo de nombres o índices. A $\Lambda$ también se le denomina conjunto de índices. Por ejemplo, si se tiene interés únicamente en dos conjuntos, entonces el conjunto de índices $\Lambda$ incluye solo dos índices, por ejemplo, 1 y 2; así, $\Lambda=\{1,2\}$.
+
+\begin{definition}[Unión e intersección de conjuntos]
+    Sea  $\Lambda$ un conjunto de índices y $\{A_\lambda: \lambda \in \Lambda\}= \{A_\lambda\}$, una colección de subconjuntos de $\Omega$ indexados por $\Lambda$. El conjunto de puntos que consiste en todos los puntos que pertenecen a $A_\lambda$ para al menos un $\lambda$ se denomina unión de los conjuntos $\{A_\lambda\}$ y se denota como $\bigcup\limits_{\lambda\in \Lambda} A_\lambda$. El conjunto de puntos que consiste en todos los puntos que pertenecen a $A_\lambda$ para cada $\lambda$ se denomina intersección de los conjuntos $\{A_\lambda\}$ y se denota como $\bigcap\limits_{\lambda\in\Lambda} A_\lambda$. Si $\Lambda$ está vacío, entonces se define $\bigcup\limits_{\lambda\in \Lambda} A_\lambda = \emptyset$ y $\bigcap\limits_{\lambda\in\Lambda} A_\lambda=\Omega$.
+\end{definition}
+Uno de los teoremas más fundamentales que relaciona las uniones, intersecciones y complementos para una colección arbitraria de conjuntos se debe a De Morgan.
+
+\begin{theorem}[Teorema de De Morgan]
+    Sea $\Lambda$ un conjunto de índices y $\{A_\lambda\}$ una colección de subconjuntos de $\Omega$ indexados por $\Lambda$. Entonces,
+    \begin{itemize}
+        \item[(i)] $\left(\bigcup\limits_{\lambda\in\Lambda} A_\lambda\right)^c = \bigcap\limits_{\lambda\in\Lambda} A_\lambda^c$
+        \item[(ii)] $\left(\bigcap\limits_{\lambda\in\Lambda} A_\lambda\right)^c = \bigcup\limits_{\lambda\in\Lambda} A_\lambda^c$
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}[Disjuntos o mutuamente excluyentes]
+    Los subconjuntos $A$ y $B$ de $\Omega$ se definen como mutuamente excluyentes o disjuntos si $A\cap B=\emptyset$. Los subconjuntos $A_1, A_2, \ldots$ se definen como mutuamente excluyentes si $A_i\cap A_j=\emptyset$ para cada $i\neq j$.
+\end{definition}
+
+
+
+
+
+
+
+
+
+\subsection{Probabilidad y Estadística}
+Una de las herramientas fundamentales de la estadística es la probabilidad, la cual tuvo sus inicios formales con los juegos de azar en el siglo XVII. Los juegos de azar, como su nombre indica, involucran acciones como girar una rueda de ruleta, lanzar dados, lanzar una moneda, sacar una carta, entre otros, en los que el resultado de un evento es incierto. No obstante, se reconoce que aunque el resultado de cada evento en particular pueda ser incierto, existe un patrón predecible a largo plazo. Por ejemplo, se sabe que en múltiples lanzamientos de una moneda ideal (equilibrada y simétrica), aproximadamente la mitad de los resultados serán caras. Es esta regularidad predecible a largo plazo la que permite a las casas de juego mantener sus negocios.
+
+Un tipo similar de incertidumbre y regularidad a largo plazo se observa con frecuencia en la ciencia experimental. Por ejemplo, en la ciencia de la genética no se puede determinar con certeza si una descendencia será masculina o femenina, pero a largo plazo se sabe aproximadamente qué porcentaje de descendencia será de cada sexo. De manera similar, una compañía de seguros de vida no puede predecir qué personas en los Estados Unidos morirán a los 50 años, pero puede hacer predicciones precisas sobre cuántas personas morirán a esa edad en promedio.\\
+
+Para brindar una idea de lo que es la probabilidad, \cite{mood86} proporciona las siguientes definiciones:
+
+
+\begin{definition}[Probabilidad clásica]
+    Si un experimento aleatorio puede resultar en $n$ resultados mutuamente excluyentes e igualmente probables y si $s$ de estos resultados tienen un atributo $A$, entonces la probabilidad de $A$ es la fracción $s/n$.
+\end{definition}
+
+\begin{definition}[Probabilidad frecuentista]
+    Suponiendo que después de $n$ repeticiones, para valores muy grandes de $n$, un evento $A$ puede ocurrir $s$ veces. Entonces $p=s/n$.
+\end{definition}
+
+Estas definiciones, a pesar de su intuición, presentan limitaciones significativas. Por ejemplo, la primera definición es circular, ya que la frase ``igualmente probables'' es justamente lo que se intenta definir. Además, la segunda definición no especifica los valores de $n$, lo cual puede generar ambigüedad. Estas definiciones son consideradas antiguas, pero aún pueden brindar una comprensión general del concepto de \textbf{probabilidad}.\\
+
+\subsubsection{Espacio muestral y eventos}
+A continuación, se presentarán algunas definiciones que resultarán de gran utilidad para adquirir un mayor conocimiento sobre el concepto de probabilidad. 
+\begin{definition}[Espacio muestral]
+    El espacio muestral, denotado por $\Omega$, es la colección o totalidad de todos los posibles resultados de un experimento conceptual.
+\end{definition}
+
+Un resultado particular, es decir, un elemento del espacio muestral $\Omega$, se denomina un \textit{punto muestral} o una \textit{muestra}.
+
+\begin{definition}[Evento]
+Un evento $A$ es un subconjunto del espacio muestral $\Omega$, es decir, es un conjunto de resultados.
+\end{definition}
+
+\begin{definition}[Espacio de eventos]
+    La clase de todos los eventos asociados a un experimento dado se define como el espacio de eventos y se denotará por $\mathscr{A}$.
+\end{definition}
+
+\begin{definition}[Evento particular]
+   El evento $\{\omega\}$, que está constituido por un solo punto $\omega \in \Omega$, se denomina \textit{evento muestral} o \textit{punto muestral}.
+\end{definition}
+
+Las definiciones anteriores no definen con precisión lo que es un evento. Un evento siempre será un subconjunto del espacio muestral, pero para espacios muestrales suficientemente grandes, no todos los subconjuntos serán eventos. Por lo tanto, la clase de todos los subconjuntos del espacio muestral no necesariamente corresponderá al espacio de eventos. Sin embargo, se observará que la clase de todos los eventos siempre se puede seleccionar lo suficientemente grande como para incluir todos aquellos subconjuntos (eventos) cuya probabilidad se desee analizar. Si el espacio muestral consta solo de un número finito de puntos, entonces el espacio de eventos correspondiente será la clase de todos los subconjuntos del espacio muestral.\\
+
+Los conceptos presentados se ilustran con unos ejemplos muy simples;
+
+\begin{example}[Lanzamiento de una moneda]
+    Considerando el experimento de lanzar una moneda, este experimento es uno de los más sencillos, pero permite representar claramente los conceptos. El espacio muestral estaría conformado por $\Omega = \{A, S\}$, donde $A$ representa el resultado de que caiga águila y $S$ representa el resultado de que caiga sol. El conjunto $\mathscr{A}$ podría estar representado por $\{\{A\}, \{S\}\}$, que también es un subconjunto de $\Omega$.\\
+
+Es importante destacar que el conjunto vacío $\emptyset$ y el conjunto completo $\Omega$ también son subconjuntos de $\Omega$, pero generalmente no se consideran eventos de interés en este contexto.
+\end{example}
+
+\begin{example}[Lanzamiento de un dado]
+   Considerando el experimento de lanzar un dado de $6$ caras. El espacio muestral $\Omega$ se define como 
+   $$\Omega = \{1, 2, 3, 4, 5, 6\}.$$ 
+   Un punto muestral podría ser un resultado específico, por ejemplo, $\{1\}$. Todos los subconjuntos posibles de resultados constituirían el conjunto $\mathscr{A}$.
+
+Se definen los eventos $A$, que representa el evento de obtener un resultado par; $B$, que representa el evento de obtener un resultado impar; y $C$, que representa el evento de obtener un resultado mayor a 3. Por lo tanto, se tiene:
+    $$A=\{2,4,6\}, \quad B=\{1,3,5\}, \quad C=\{4,5,6\}$$
+    Se observa que el evento de la unión de los eventos $B$ y $C$, denotado como $B\cup C$, es igual a $\{1, 3, 4, 5, 6\}$, el cual también es un evento en el espacio muestral $\Omega$.
+
+Finalmente, se destaca que los eventos $A$ y $B$ no tienen elementos en común, es decir, $A \cap B = \emptyset$. Por lo tanto, se dice que estos eventos son ajenos, mutuamente excluyentes o disjuntos.
+\end{example}
+
+La definición de espacio muestral es precisa y satisfactoria, mientras que las definiciones de evento y espacio de eventos no son completamente satisfactorias. Se mencionó que si el espacio muestral era ``suficientemente grande", no todos los subconjuntos del espacio muestral serían eventos; sin embargo, no se especificó exactamente qué subconjuntos serían eventos y cuáles no lo serían. En lugar de desarrollar las matemáticas necesarias para definir con precisión qué subconjuntos de $\Omega$ constituyen nuestro espacio de eventos $\mathscr A$, se pueden enunciar algunas propiedades de $\mathscr A$ que parecen razonables requerir.
+
+\begin{itemize}
+    \item[(i)] $\Omega \in \mathscr A$.
+    \item[(ii)] Si $A\in\mathscr A$, entonces $A^c\in \mathscr A$.
+    \item[(iii)] Si $A_1$ y $A_2\in \mathscr A$, entonces $A_1\cup A_2\in \mathscr A$.
+\end{itemize}
+Se mencionó anteriormente que el interés principal radica en los eventos debido a la probabilidad de que ocurran. Por lo tanto, es deseable que $\mathscr A$ incluya $\Omega$, el evento seguro. Además, si $A$ es un evento, lo que significa que se puede hablar sobre la probabilidad de que ocurra $A$, entonces $A^c$ también debería ser un evento para poder hablar sobre la probabilidad de que $A$ no ocurra. De manera similar, si $A_1$ y $A_2$ son eventos, entonces $A_1\cup A_2$ también debería ser un evento.\\
+
+Cualquier colección de eventos con propiedades (i) y (iii) se denomina álgebra booleana, o simplemente álgebra, de eventos. Cabe señalar que la colección de todos los subconjuntos de $\Omega$ satisface necesariamente las propiedades mencionadas anteriormente. Varios resultados se derivan de las propiedades asumidas anteriormente de $\mathscr A$.
+
+\subsubsection{Definición de probabilidad} 
+En esta sección se presenta la definición axiomática de probabilidad. Aunque esta definición formal de probabilidad por sí sola no permite asignar probabilidades reales a eventos que consisten en ciertos resultados de experimentos aleatorios, es otra de una serie de definiciones que conducen a ese objetivo. Dado que la probabilidad, al igual que los conceptos que se presentarán, se define como una función particular, se inicia esta subsección con una revisión del concepto de función.
+\begin{definition}[Función]
+    Una función, llamada $f(\cdot)$, con dominio $A$ y contradominio $B$, es una colección de pares ordenados, llamados $(a,b)$, que cumplen las siguientes condiciones: 
+    \begin{itemize}
+        \item[(i)] $a\in A$ y $b\in B$
+        \item[(ii)] Cada $a\in A$ aparece como el primer elemento de algún par ordenado en la colección (cada $b\in B$ no necesariamente es el segundo elemento de algún par ordenado) 
+        \item[(iii)] Ningún par ordenado en la colección tiene el mismo primer elemento que otro par ordenado distinto.
+    \end{itemize}
+\end{definition}
+Si $(a,b)\in f(\cdot)$, se escribe $b=f(a)$ (se lee "$b$ es igual a $f$ de $a$") y se denomina $f(a)$ como el valor de $f(\cdot)$ en $a$. Para cualquier $a\in A$, $f(a)$ es un elemento de $B$; mientras que $f(\cdot)$ es un conjunto de pares ordenados. El conjunto de todos los valores de $f(\cdot)$ se denomina rango de $f(\cdot)$; es decir, el rango de $f(\cdot)=\{b\in B:b=f(a) \text{ para algún } a\in A\}$ y siempre es un subconjunto del contradominio $B$, pero no necesariamente igual a él. $f(a)$ también se denomina imagen de $a$ bajo $f(\cdot)$, y $a$ se denomina preimagen de $f(a)$.\\
+\begin{example}
+    Sean $f_1(\cdot)$ y $f_2(\cdot)$ dos funciones con la recta real como su dominio y contradominio, definidas por 
+$$f_1(\cdot)= \{(x,y): y = x^3 +1, -\infty< x< \infty\}$$
+y
+$$f_2(\cdot)= \{(x,y): y = x^2, -\infty< x< \infty\}$$
+El rango de $f_1(\cdot)$ es el contradominio, que es toda la recta real, pero el rango de $f_2(\cdot)$ son todos los números reales no negativos, que no es igual al contradominio.
+\end{example}
+De particular interés será una clase de funciones conocidas como funciones indicadoras.
+\begin{definition}[Función indicadora]
+    Sea $\Omega$ cualquier espacio con puntos $\omega$ y $A$ cualquier subconjunto de $\Omega$. La función indicadora de $A$, denominada $I_A(\cdot)$, es la función con dominio $\Omega$ y contradominio formado por dos números reales, $0$ y $1$, definida por
+    $$I_A(\omega)= \left\{ \begin{array}{lcc} 1 & si & \omega \in A\\ \\ 0 & si & \omega \notin A \end{array} \right.$$
+    $I_A(\cdot)$ claramente ``indica'' el conjunto $A$.
+\end{definition}
+
+\textbf{Propiedades de la función indicadora}\\
+Sea $\Omega$ cualquier espacio y  $\mathscr A$ cualquier colección de subconjuntos de $\Omega$:
+\begin{itemize}
+    \item[(i)] $I_A(\omega)= 1- I_{A^c}(\omega)$ para cada $A\in \mathscr A$. 
+    \item[(ii)] $I_{A_1A_2\cdots A_n}(\omega)= I_{A_1}(\omega)\cdot I_{A_2}(\omega)\cdots I_{A_n}(\omega)$  para $A_1,\ldots, A_n\in \mathscr A$.
+    \item[(iii)] $I_{A_1\cup A_2\cup\cdots\cup A_n}(\omega)= \max{[I_{A_1}(\omega), I_{A_2}(\omega),\ldots, I_{A_n}(\omega)]}$ para $A_1, \ldots, A_n \in\mathscr A$.
+    \item[(iv)] $I_A^2(\omega)= I_A(\omega)$ para cada $A\in\mathscr A$. 
+\end{itemize}
+La función indicadora será utilizada para ``indicar" subconjuntos de la recta real; por ejemplo;
+$$I_{\{[0,1)\}}(x)= I_{[0,1)}(x)=\left\{ \begin{array}{lcc} 1 & \text{si} & 0\leq x<1\\ \\ 0 & \text{ otro caso} \end{array} \right. $$
+y si $I^+$ denota el conjunto de números enteros positivos,
+$$I_{I^+}(x)=\left\{ \begin{array}{lcc} 1 & \text{si $x$ es algún entero positivo}\\ \\ 0 & \text{ otro caso} \end{array} \right. $$
+Otro tipo de función del cual se tendrá ocasión de discutir es la función de conjunto definida como cualquier función que tiene como dominio una colección de conjuntos y como contradominio la recta real, incluyendo posiblemente el infinito. A continuación se muestra un ejemplos de función de conjunto
+\begin{example}
+    Sea $\Omega$ el espacio muestral correspondiente al experimento de lanzar dos dados, y sea $\mathscr A$ la colección de todos los subconjuntos de $\Omega$. Para cualquier $A\in\mathscr A$, se define $N(A)$ como el número de resultados, o puntos en $\Omega$, que están en $A$. Entonces, $N(\emptyset)=0$, $N(\Omega)=36$ y $N(A)=6$ si $A$ es el evento que contiene aquellos resultados que tienen un total de siete puntos arriba.
+\end{example}
+La función de tamaño del conjunto aludida en el ejemplo anterior puede ser definida, en general, para cualquier conjunto $A$ como el número de puntos en $A$, donde $A$ es un miembro de una colección arbitraria de conjuntos $\mathscr A$.\\
+
+La función de probabilidad que se definirá será una función de conjunto particular.
+\begin{definition}[Función de probabilidad]
+   Sea $A$ un evento del espacio muestral $\Omega$. Una función $P: \mathscr A \to [0,1]$ es llamada función de probabilidad y $P(A)$ se denomina la \textit{probabilidad} del evento $A$ si se cumplen los siguientes axiomas:
+\begin{itemize}
+    \item[(i)] \textbf{No negatividad}: Para todo evento $A$ en $\mathscr{A}$, la probabilidad $P(A)$ es un número no negativo, es decir, $P(A) \geq 0$.
+    \item[(ii)] \textbf{Probabilidad unitaria}: La probabilidad del espacio muestral completo $\Omega$ es igual a 1, es decir, $P(\Omega) = 1$.
+    \item[(iii)] \textbf{Aditividad}: Para cualquier colección de eventos mutuamente excluyentes $A_1, A_2, A_3, \ldots$, la probabilidad de la unión de estos eventos es igual a la suma de las probabilidades individuales, es decir, $$P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{i=1}^\infty P(A_i)$$
+\end{itemize} 
+\end{definition}
+Estos axiomas establecen las propiedades esenciales que debe cumplir una función de probabilidad para ser considerada válida. Cumplir con estos axiomas garantiza que la función de probabilidad asigna valores coherentes y consistentes a los eventos en el espacio muestral.\\
+
+
+A partir de los axiomas, se derivan otras propiedades que nos ayudarán a posible calcular las probabilidades de varios eventos.
+\begin{itemize}
+    \item[(i)] $P(\emptyset)=0$.
+    \item[(ii)] Si $A_1, \ldots, A_n$ son eventos mutuamente excluyentes en $\mathscr A$, entonces
+    $$P\left(\bigcup\limits_{i=1}^n A_i\right)= \sum\limits_{i=1}^n P(A_i).$$
+    \item[(iii)] Si $A$ es un evento en $\mathscr A$, entonces $$P(A^c)= 1-P(A)$$.
+    \item[(iv)] Si $A,B\in\mathscr A$, entonces 
+    $$P(A)= P(A\cap B)+ P(A\cap B^c)$$
+    y $$P(A-B)=P(A\cap B^c)= P(A)-P(A\cap B)$$
+    \item[(v)] Para cualesquiera dos eventos $A,B\in \mathscr A$;
+    $$P(A\cup B)= P(A)+P(B)-P(A\cap B).$$
+    Más generalmente, para eventos $A_1, A_2, \ldots, A_n\in \mathscr A$
+    \begin{align*}
+        P(\bigcup\limits_{i=1}^n A_i)&= \sum_{j=1}^n P(A_j)-{\sum\sum}_{i<j} P(A_i\cap A_j)+{\sum\sum\sum}_{i<j<k} P(A_i\cap A_j\cap A_k)\\
+        &-\cdots+(-1)^{n+1}P[A_1\cap A_2\ldots\cap A_n].
+    \end{align*}
+    \item[(vi)] Si $A,B\in \mathscr A$ y $A\subset B$, entonces $P(A)\leq P(B)$.
+\end{itemize}
+\begin{theorem}[Desigualdad de Boole]
+    Si $A_1, A_2, \ldots, A_n\in\mathscr A$, entonces
+    $$P\left(\bigcup_{i=1}^n A_i\right)\leq \sum_{i=1}^n P(A_i)$$
+\end{theorem}
+Finalmente se concluye esta subsección con la siguiente definición
+\begin{definition}[Espacio de probabilidad]
+    Un espacio de probabilidad es la terna $(\Omega, \mathscr A, P)$, donde $\Omega$ es un espacio muestral, $\mathscr A$ es una colección (asumida como un álgebra) de eventos (cada uno un subconjunto de $\Omega$), y $P$ es una función de probabilidad con dominio $\mathscr A$.
+\end{definition}
+
+\subsubsection{Probabilidad condicional}
+En ocasiones, es de interés conocer la probabilidad de un evento, dado que haya ocurrido otro. En este sentido, se define la probabilidad condicional.
+\begin{definition}[Probabilidad condicional]
+    Sean $A$ y $B$ dos eventos en $\mathscr A$ del espacio de probabilidad dado $(\Omega, \mathscr A, P)$. La probabilidad condicional del evento $A$ dado el evento $B$, denotada por $P(A|B)$, se define como sigue;
+    $$P(A|B)= \frac{P(A\cap B)}{P(B)}\qquad\text{si }\quad P(B)>0,$$
+    y se deja sin definir si $P(B)=0$.
+\end{definition}
+
+\begin{remark}
+    Una fórmula que es evidente a partir de la definición es $$P(A\cap B)= P(A|B)P(B)=P(B|A)P(A)$$ si tanto $P(A)$ como $P(B)$ son diferentes de cero. Esta fórmula relaciona $P(A|B)$ con $P(B|A)$ en términos de las probabilidades incondicionales $P(A)$ y $P(B)$.
+\end{remark}
+De la definición anterior, se desprenden las siguientes propiedades de la función de probabilidad condicional. Se asume que el espacio de probabilidad $(\Omega, \mathscr A, P)$ está dado, y se considera que $B\in\mathscr A$ cumple con $P[B]>0$.
+\begin{itemize}
+    \item[(i)] $P(\emptyset| B)=0$.
+    \item[(ii)] Si $A_1, A_2, \ldots, A_n$ son eventos mutuamente excluyentes en $\mathscr A$, entonces
+    $$P\left(\bigcup_{i=1}^n A_i|B\right)= \sum_{i=1}^n P(A_i|B).$$
+    \item[(iii)] Si $A$ es un evento en $\mathscr A$, entonces  $P(A^c| B)=1-P(A|B)$.
+    \item[(iv)] Si $A_1, A_2\in \mathscr A$, entonces $P(A_1|B)=P(A_1\cap A_2|B)+ P(A_1\cap A_2^c|B)$.
+    \item[(v)] Para cualesquiera dos eventos $A_1,A_2\in \mathscr A$
+    $$P(A_1\cup A_2|B)=P(A_1|B)+P(A_2|B)-P(A_1\cap A_2|B).$$
+    \item[(vi)] Si $A_1, A_2\in\mathscr A$ y $A_1\subset A_2$, entonces $P(A_1|B)\leq P(A_2|B)$.
+    \item[(vii)] Si $A_1, A_2,\ldots, A_n\in\mathscr A$, entonces
+    $$P\left(\bigcup_{i=1}^n A_i|B\right)\leq \sum_{i=1}^n P(A_i|B).$$
+\end{itemize}
+A continuación se mencionan unos teoremas de gran importancia. La aplicación de dichos teoremas se ilustran con unos ejemplos.
+\begin{theorem}[Teorema de probabilidades totales]
+    Para un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, si $B_1, B_2, \ldots, B_n$ es una colección de eventos mutuamente disjuntos en $\mathscr A$ que satisfacen $\Omega = \bigcup\limits_{j=1}^n B_j$ y $P(B_j)>0$ para $j=1,\ldots, n$, entonces para cada $A\in \mathscr A$, $$P(A)=\sum_{j=1}^n P(A|B_j)P(B_j).$$
+\end{theorem}
+\begin{proof} Se observa que $A=\bigcup\limits_{j=1}^n A\cap B_j$ y los conjuntos $A\cap B_j$ son mutuamente disjuntos; por lo tanto,
+    $$P(A)=P\left(\bigcup_{j=1}^n A\cap B_j\right)=\sum_{j=1}^n P(A\cap B_j)= \sum_{j=1}^n P(A|B_j)P(B_j)$$
+\end{proof}
+
+\begin{theorem}[Teorema de Bayes]
+    Para un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, si $B_1, B_2, \ldots, B_n$ es una colección de eventos mutuamente disjuntos en $\mathscr A$ que satisfacen $\Omega=\bigcup\limits_{j=1}^n B_j$ y $P(B_j)>0$ para $j=1,\ldots, n$, entonces para cada $A\in\mathscr A$ para el cual $P(A)>0$
+    $$P(B_k|A)= \frac{P(A|B_k)P(B_k)}{\sum\limits_{j=1}^n P(A|B_j)P(B_j)}.$$
+\end{theorem}
+\begin{proof}
+    $$P(B_k|A)= \frac{P(B_k\cap A)}{P(A)}=\frac{P(A|B_k)P(B_k)}{\sum\limits_{j=1}^n P(A|B_j)P(B_j)}$$
+    utilizando tanto la definición de probabilidad condicional como el teorema de probabilidad total.
+\end{proof}
+
+\begin{theorem}[Regla de multiplicación]
+    Para un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, sean $A_1, A_2, \ldots, A_n$ eventos pertenecientes a $\mathscr A$ para los cuales $P(A_1\cdots A_{n-1})>0$; entonces
+    $$P(A_1\cap A_2\cap \cdots\cap A_n)= P(A_1)P(A_2|A_1)P(A_3|A_1\cap A_2)\cdots P(A_n|A_1\cap \cdots\cap A_{n-1})$$
+\end{theorem}
+
+\subsubsection{Independencia de Eventos}
+Si $P(A|B)$ no depende del evento $B$, es decir, $P(A|B)=P(A)$, entonces parecería natural decir que el evento $A$ es independiente del evento $B$. Esto se establece en la siguiente definición.
+\begin{definition}[Eventos independientes]
+    Para un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, sean $A$ y $B$ dos eventos en $\mathscr A$. Los eventos $A$ y $B$ se definen como \textit{independientes} si y solo si se cumple alguna de las siguientes condiciones:
+    \begin{itemize}
+        \item[(i)] $P(A\cap B)= P(A)P(B)$.
+        \item[(ii)] $P(A|B)=P(A)$ si $P(B)>0$.
+        \item[(iii)]  $P(B|A)=P(B)$ si $P(A)>0$.
+    \end{itemize}
+\end{definition}
+De la definición anterior, se desprende lo siguiente
+\begin{theorem}
+    Si $A$ y $B$ son dos eventos independientes definidos en un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, entonces los siguientes eventos también son independientes
+    \begin{itemize}
+        \item[(i)] $A$ y $B^c$, 
+        \item[(ii)] $A^c$ y $B$,
+        \item[(iii)] $A^c$ y $B^c$.
+    \end{itemize}
+\end{theorem}
+\begin{remark}
+    No debe confundirse los términos \textbf{eventos independientes} y \textbf{eventos disjuntos}. De hecho, los eventos disjuntos suelen ser muy dependientes por que la ocurrencia de uno implica la no ocurrencia del otro. El único evento que es independiente y ajeno es el vacío $\emptyset$.
+\end{remark}
+
+La noción de eventos independientes puede ser extendido a más de dos eventos como se sigue;
+\begin{definition}[Independencia de varios eventos]
+    Para un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, sean $A_1, A_2, \ldots, A_n$ eventos en $\mathscr A$. Los eventos $A_1, A_2, \ldots, A_n$ se definen como independientes si y solo si $P\left(\bigcap\limits_{i=1}^n A_i\right)=\prod\limits_{i=1}^n P(A_i)$
+\end{definition}
+
+\subsubsection{Variables aleatorias}
+Hasta el momento se conoce cómo asignar probabilidades a eventos del espacio muestral, sin embargo en la práctica esto no siempre es posible ya que sería complicado mencionar o enumerar todos los elementos del espacio muestral.\\
+
+Por esta razón es necesario ``traducir'' dichos eventos a números reales. Esto es posible mediante el uso de \textit{variables aleatorias}.
+\begin{definition}[Variable aleatoria]
+    Para un espacio de probabilidad dado $(\Omega, \mathscr A, P)$, una variable aleatoria, denotada por $X$ o $X(\cdot)$, es una función con dominio $\Omega$ y contradominio la recta real. La función $X(\cdot)$ debe ser tal si $\omega\in\Omega$ entonces $X(\omega)\in\mathbb R$. Si $B\subset \mathbb R$ entonces $X^{-1}(B)\in\mathscr A$, donde $X^{-1}(B)=\{\omega\in\Omega| X(\omega\in B)\}$.
+\end{definition}
+Existen dos tipos de variables aleatorias: discretas y continuas. Las variables aleatorias discretas toman sus valores en un conjunto finito o numerable, por ejemplo, el conjunto de los números naturales $\mathbb N$. A este conjunto de valores se le conoce como conjunto de valores posibles o $D_X$. Las variables aleatorias continuas, por el contrario, toman sus valores en el conjunto de los números reales $\mathbb R$.
+
+\subsubsection{Función de distribución}
+Para describir el comportamiento de una variable aleatoria, se debe conocer cómo se comportan sus probabilidades, esto puede realizarse mediante la \textbf{función de distribución}.
+
+\begin{definition}[Función de distribución acumulada]
+    La función de distribución acumulada de una variable aleatoria $X$, denotada por $F_X(\cdot)$, se define como aquella función con dominio la recta real y contradominio el intervalo $[0,1]$, que satisface $F_X(x)=P(X\leq x)=P({\omega: X(\omega)\leq x})$ para cada número real $x$.
+\end{definition}
+Una función de distribución definida es única para cada variable y siempre existirá, es importante conocerla por que con ella se pueden calcular probabilidades de la variable aleatoria.\\
+
+A continuación, se presenta un ejemplo y propiedades de la función de distribución acumulada.
+\begin{example}
+    Se considera el experimento de lanzar una moneda. Supongamos que la moneda es justa. Sea $X$ el número de caras obtenidas. Entonces,
+    $$F_X(x)=\left\{ \begin{array}{lcc} 0 & \text{si} & x<0\\ \\ \frac{1}{2} & \text{si} & 0\leq x<1 \\ \\1 & \text{si} & 1\leq x \end{array} \right. $$
+O $F_X(x)=\frac{1}{2}I_{[0,1)}(x)+ I_{[1,\infty)}(x)$ en nuestra notación de función indicadora.
+\end{example}
+
+\textbf{Propiedades de la función indicadora}
+\begin{itemize}
+    \item[(i)] $F_X(-\infty)\equiv \lim\limits_{x\to-\infty} F_X(x)=0$, y $F_X(+\infty)\equiv \lim\limits_{x\to+\infty} F_X(x)=1$.
+    \item[(ii)] $F_X(\cdot)$ es una función monótona creciente; es decir, para toda $a< b$ entonces $F_X(a)\leq F_X(b)$.
+    \item[(iii)] $F_X(\cdot)$ es continua por la derecha, esto es $\lim\limits_{0<h\to 0} F_X(x+h)=F_X(x)$. 
+\end{itemize}
+
+
+\begin{definition}[Función de distribución acumulada]
+    Cualquier función $F(\cdot)$ con dominio la recta real y contradominio el intervalo $[0,1]$, que satisface las tres propiedades mencionadas anteriormente, se define como una función de distribución acumulada.
+\end{definition}
+
+% Poner ejemplo lanzar tres monedas y duración de una llamada telefónica.
+
+\begin{remark}
+    Se debe tener cuidado cuando se calcula probabilidades de variables aleatorias discretas ya que en general no es lo mismo $P(X< x)$ que $P(X\leq x)$.
+\end{remark}
+
+\subsubsection{Función de densidad}
+Otra función relacionada con las variables aleatorias es la función de densidad.\\
+
+A diferencia de la función de distribución, esta función es distinta según si la variable aleatoria es discreta o continua. Primero se definirá para el caso discreto y posteriormente para el caso continuo.\\
+
+\textbf{Variables aleatorias discretas}  
+\begin{definition}[Variable aleatoria discreta]
+Se definirá una variable aleatoria $X$ como discreta si el rango de $X$ es numerable. Si una variable aleatoria $X$ es discreta, entonces su función de distribución acumulada correspondiente $F_X(\cdot)$ se definirá como discreta.
+\end{definition}
+
+\begin{definition}[Función de densidad de una variable aleatoria discreta]
+    Si $X$ es una variable aleatoria discreta con $D_x=x_1,x_2,\ldots$ entonces la función, denotada por $f_X(\cdot)$ y definida por
+$$f_X(x)=\begin{cases}
+P(X=x_j) & \text{ si } x \in D_x\\
+0 & \text{ cualquier otro caso.}  
+\end{cases}$$
+es la función de densidad discreta de $X$.
+\end{definition}
+
+\begin{remark}
+    En ocasiones se usa la función indicadora $I_{D_x}(x)=1$ si $x\in D_x$ y $I_{D_x}(x)=0$ si $x\notin D_x$ para expresar la función de densidad en una sola línea.
+\end{remark}
+
+\begin{theorem}
+    Sea $X$ una variable aleatoria discreta. $F_X(\cdot)$ puede ser obtenido a partir de $f_X(\cdot)$, y viceversa.
+\end{theorem}
+
+\begin{definition}[Función de densidad discreta]
+    Cualquier función $f(\cdot)$ con dominio $\mathbb R$ y contradominio $[0,1]$ se define como una función de densidad discreta si para algún conjunto contable $D=\{x_1, x_2,\ldots\}$, se cumple lo siguiente;
+\begin{itemize}
+    \item[(i)] $f(x_j)>0$ para $j=1,2,\ldots.$
+    \item[(ii)] $f(x)=0$ para $x neq x_j$ con $j=1,2,\ldots.$ 
+    \item[(iii)] $\sum_D f(x_j)=1$.
+\end{itemize}
+\end{definition}
+
+\textbf{Variables aleatorias continuas}  
+\begin{definition}[Variable aleatoria continua]
+    Se llama variable aleatoria continua a $X$ si existe una función $f_X(\cdot)$ tal que $F_X(x)=\int_{-\infty}^x f_X(u) du$ para cada número real $x$. La función de distribución acumulada $F_X(\cdot)$ de una variable aleatoria continua $X$ se llama absolutamente continua.
+\end{definition}
+
+\begin{definition}[Función de densidad de una variable aleatoria continua]
+    Si $X$ es una variable aleatoria continua, la función $f_X(\cdot)$ en $F_X(x)=\int_{-\infty}^x f_X(u)du$ se llama función de densidad de $X$.
+\end{definition}
+
+\begin{remark}
+    En ocasiones se usa la función indicadora $I_{(a,b)}(x)=1$ si $x\in (a,b)$ y $I_{(a,b)}(x)=0$ si $x\notin (a,b)$ para expresar la función de densidad en una sola línea.
+\end{remark}
+
+\begin{theorem}
+    Si $X$ es una variable aleatoria continua, entonces $F_X(\cdot)$ se puede obtener a partir de una función $f_X(\cdot)$, y viceversa.
+\end{theorem}
+
+Las demostraciones de los Teoremas 1.9 y 1.8 pueden ser consultados en \cite{mood86}
+
+\begin{example}[Duración de una llamada telefónica]
+    Usando el teorema fundamental del cálculo, se puede probar la propiedad anterior. Se ilustrará para el ejemplo de la duración de llamadas telefónicas.
+
+Supóngase que la función de distribución para modelar la duración de las llamadas telefónicas es
+
+$$
+F_X(x)=\begin{cases}0 & \text{ si } x \le 0\\
+1-e^{-x} & \text{ si } 0< x\end{cases}
+$$
+
+Se observa que $F_X(x)$ está definida en dos partes, por lo que la función no es absolutamente continua en cero, por lo que solo será diferenciable en el intervalo de los reales positivos.
+
+$$
+f_X(x)=\frac{dF_X(x)}{dx}=\frac{d (1-e^{-x})}{dx}=-\frac{d e^{-x}}{dx}=e^{-x}
+$$
+
+es decir;
+
+$$
+f_X(x)=e^{-x}I_{(0,\infty)}(x).
+$$
+
+Por otro lado, se observa que
+
+$$
+F_X(x)= \int_{\infty}^x e^{-u}du=\int_0^x e^{-u}du=1-e^{-x},
+$$
+
+es decir
+
+$$
+F_X(x)=1-e^{-x} I_{(0,\infty)}(x)
+$$
+
+De esta manera, se comprueba la propiedad.
+\end{example}
+
+\begin{algorithm}
+    \caption{Búsqueda en línea}
+        \label{alg:busqueda_en_linea}
+            \SetKwRepeat{Repetir}{repetir}{fin (repetir)}
+            
+            \Entrada{$\alpha_{max} > 0$ y $\alpha_1 \in (0,\alpha_{max})$}
+            \Salida{$\alpha *$}
+            \BlankLine
+            $\alpha_0 \gets 0;$\\
+            $i \gets 1;$
+
+        \Inicio{
+            \Repetir{}{Evaluar $\phi(\alpha^{(i)});$\\
+                    \If{$\phi(\alpha^{(i)})>\phi(0) + c_1\alpha^{(i)}\phi'(0)$ \textbf{ó} 
+                    $\phi(\alpha^{(i)}) \geq \phi(\alpha^{(i-1)})$ e $i>1$ }{$\alpha * \gets \textbf{zoom}(\alpha^{(i-1)},\alpha^{(i)})$
+                    }
+                    \If{$\abs{\phi'(\alpha^{(i)})} \leq -c_{2}\phi'(0)$}{$\alpha *\gets\alpha^{(i)}$}
+                    \If{$\phi'(\alpha^{(i)}) \geq 0$}{$\alpha *\gets \textbf{zoom}(\alpha_{i},\alpha^{(i-1)})$}
+            Elegir\ $\alpha_{i+1}\in(\alpha^{(i)},\alpha_{max})$;\\
+            $i \gets {i + 1};$}}
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{definition}[Proceso estocástico]
+Un proceso estocástico real es una colección de variables aleatorias  $\{X_t; t\in T\}$ definida en un espacio de probabilidad común $(\Omega, \mathfrak{F}, P)$ con valores en $\mathbb{R}$. $T$ se llama el conjunto índice del proceso o espacio paramétrico, que generalmente es un subconjunto de $\mathbb R$. El conjunto de valores que la variable aleatoria $X_t$ puede tomar se denomina espacio de estado del proceso y es denotado por $S$.
+\end{definition}
+
+\section{Procesos estocásticos.}
+Un proceso estocástico de tiempo discreto (o simplemente proceso), es una secuencia $(X_t)_\tau$ de variables aleatorias $X_t : \Omega \to \mathcal{S}$ definidas en un espacio de probabilidad $(\Omega, \mathfrak{F}, P)$ y con rango $\mathcal{S}$ (el espacio de estado del proceso), donde $\tau$ es un conjunto discreto y totalmente ordenado. Para simplificar, solemos elegir $\tau = \mathbb{Z} := \{\ldots,-1, 0, 1,\ldots\}$ o $\tau = \mathbb{N}_0 := \{0, 1,\ldots\}$. Distinguimos entre procesos de valor continuo y procesos de valores discretos, dependiendo de si el rango $\mathcal S$ es un conjunto continuo o discreto, respectivamente. Si el rango $\mathcal{S}$ de las variables aleatorias es igual al conjunto $\mathbb R$ de números reales (o a un subconjunto conexo del mismo), nos referimos a $(X_t)_\tau$ como un proceso de valor real, mientras que un proceso de recuento incluso requiere $\mathcal S \subseteq \mathbb{N}_0$.\\
+Si se realiza el evento $\omega \in \Omega$, esto conduce a una secuencia $(X_t(\omega))_\tau$, una realización (ruta de muestra) del proceso. Una serie temporal $(x_t)_{\tau_0}$, donde $\tau_0 \subseteq \tau$ tiene que ser un conjunto finito en la práctica, se entiende entonces como una parte observable de tal realización, $(x_t)\tau_0 \subseteq (X_t(\omega))_\tau$ para un $\omega \in \Omega$ fijo.\\
+
+Si ahora hablamos de un modelo para la serie temporal, de hecho nos referimos a un modelo para el proceso subyacente.
+%En el sentido del teorema de extensión de Kolmogorov, un proceso estocástico se caracteriza únicamente a través de sus distribuciones de dimensión finita; es decir, las distribuciones conjuntas de cualquier selección finita de variables aleatorias $X_t_1,\ldots, X_t_n$ con $t_1 < \ldots < t_n \in \tau$. Además de estas distribuciones completas, ciertas propiedades de momento son especialmente relevantes para la práctica.
+
+\begin{definition}[Serie de tiempo]
+    
+\end{definition}
+
+
+
+\section{Bibliografía}
+\label{Bibliography}
+	\bibliographystyle{plainnat} 
+        \bibliography{bibliografia}
+\end{document}

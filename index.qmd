@@ -1,0 +1,15 @@
+# Preface {.unnumbered}
+
+This is a Quarto book.
+
+To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
+```{r}
+1 + 1
+```
+
+Aquí probamos código en látex
+
+$$
+x^2 + 2x+ 3 = 9
+$$

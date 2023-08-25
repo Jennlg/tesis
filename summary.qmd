@@ -1,0 +1,44 @@
+# Desarrollo
+
+Probamos ***Plotly***
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+library(plotly)
+
+stock <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+
+fig <- plot_ly(stock, type = 'scatter', mode = 'lines')%>%
+  add_trace(x = ~Date, y = ~AAPL.High)%>%
+  layout(showlegend = F)
+fig <- fig %>%
+  layout(
+         xaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         yaxis = list(zerolinecolor = '#ffff',
+                      zerolinewidth = 2,
+                      gridcolor = 'ffff'),
+         plot_bgcolor='#e5ecf6', width = 900)
+
+
+fig
+```
+
+```{r}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```
+
+```{r}
+library(readxl)
+library(dplyr)
+library(plotly)
+    data <- read_excel("Datos.xlsx")
+    fig <- plot_ly(data, labels = ~Producto, values = ~Cantidad, type='pie')
+    fig <- fig %>% layout(title = 'Ventas',
+                          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+                          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+    fig
+```

@@ -1,0 +1,5 @@
+---
+title: "dedicatoria"
+---
+
+*Aquí va la dedicatoria*
